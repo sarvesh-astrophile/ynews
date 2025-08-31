@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ynews
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - ynews-network
+
+networks:
+  ynews-network:
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local
