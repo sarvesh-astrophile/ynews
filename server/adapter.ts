@@ -1,14 +1,12 @@
-import { drizzle } from "drizzle-orm/postgres-js";
+import { drizzle } from "drizzle-orm/libsql";
+import { env } from "../env";
 
-import postgres from "postgres";
-import { z } from "zod";
+const db = drizzle(
+  {
+    connection: {
+      url: env.DATABASE_URL
+    }
+  }
+);
 
-const EnvSchema = z.object({
-  DATABASE_URL: z.url(),
-});
-
-const env = EnvSchema.parse(process.env);
-
-const client = postgres(env.DATABASE_URL, { max: 10 });
-
-export const db = drizzle(client);
+export default db;

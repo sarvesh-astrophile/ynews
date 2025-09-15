@@ -2,14 +2,21 @@
   "name": "ynews",
   "scripts": {
     "dev": "bun run --hot server/index.ts",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
     "format:write": "prettier . --write ",
     "format:check": "prettier . --check "
   },
   "dependencies": {
+    "@libsql/client": "^0.15.15",
+    "@t3-oss/env-core": "^0.13.8",
+    "better-auth": "^1.3.9",
     "drizzle-orm": "^0.44.5",
     "hono": "^4.9.5",
     "postgres": "^3.4.7",
-    "zod": "^4.1.5"
+    "zod": "^4.1.8"
   },
   "devDependencies": {
     "@eslint/compat": "^1.3.2",
