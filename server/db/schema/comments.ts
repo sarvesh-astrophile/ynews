@@ -5,7 +5,7 @@ import { postTable } from "./posts";
 import { commentUpvoteTable } from "./upvotes";
 
 export const commentTable = sqliteTable("comments", {
-    id: text("id").primaryKey(),
+    id: integer("id").primaryKey({ autoIncrement: true }),
     userId: text("user_id").notNull(),
     postId: text("post_id").notNull(),
     parentCommentId: integer("parent_comment_id"),

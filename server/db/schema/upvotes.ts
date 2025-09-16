@@ -5,7 +5,7 @@ import { commentTable } from "./comments";
 import { user } from "./auth-schema";
 
 export const postUpvoteTable = sqliteTable("post_upvotes", {
-    id: text("id").primaryKey(),
+    id: integer("id").primaryKey({ autoIncrement: true }),
     postId: text("post_id").notNull(),
     userId: text("user_id").notNull(),
     createdAt: integer("created_at", { mode: "timestamp" })
@@ -27,7 +27,7 @@ export const postUpvoteRelations = relations(postUpvoteTable, ({ one }) => ({
 }));
 
 export const commentUpvoteTable = sqliteTable("comment_upvotes", {
-    id: text("id").primaryKey(),
+    id: integer("id").primaryKey({ autoIncrement: true }),
     commentId: text("comment_id").notNull(),
     userId: text("user_id").notNull(),
     createdAt: integer("created_at", { mode: "timestamp" })
